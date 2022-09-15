@@ -1,0 +1,8 @@
+<div class="h-100">
+    <app-interest-list-presentation
+    [userList]="userList$ | async"
+    (deleteUser)="deleteUser($event)"
+    (addUser)="addUser($event)"
+    (editUser)="editUser($event)"
+    ></app-interest-list-presentation>
+</div>

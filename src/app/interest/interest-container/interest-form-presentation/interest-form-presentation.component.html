@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="form-modal rounded">
+        <div class="d-flex justify-content-between">
+            <h2 class="text-center">{{ formTitle }}</h2>
+            <a (click)="onCancel()" class="text-decoration-none">&times;</a>
+        </div>
+        <form [formGroup]="userForm" class="bg-white">
+            <div class="mb-3">
+                <label for="fullname" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullname" formControlName="fullname">
+                <div *ngIf="(userFormControl['fullname'].dirty || userFormControl['fullname'].touched) && userFormControl['fullname'].invalid
+              || isFormSubmitted && userFormControl['fullname'].invalid" class="py-1">
+                    <div *ngIf="userFormControl['fullname']errors['required']" class="text-danger">
+                        Name is required
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email">
+                <div *ngIf="(userFormControl['email'].dirty || userFormControl['email'].touched) && userFormControl['email'].invalid
+              || isFormSubmitted && userFormControl['email'].invalid" class="py-1">
+                    <div *ngIf="userFormControl['email']errors['required']" class="text-danger">
+                        Email is required
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="interest" class="form-label">Interest</label>
+                <ng-select id="interest" formControlName="interest" [multiple]="true"
+                    class="btn-all-filter" [items]="interest" bindLabel="interestType"
+                    bindValue="interestValue">
+                </ng-select>
+                <div *ngIf="(userFormControl['interest'].dirty || userFormControl['interest'].touched) && userFormControl['interest'].invalid
+              || isFormSubmitted && userFormControl['interest'].invalid" class="py-1">
+                    <div *ngIf="userFormControl['interest']errors['required']" class="text-danger">
+                        Please select one or more interests
+                    </div>
+                </div>
+                <!-- <input type="text" class="form-control" id="interest" formControlName="interest"> -->
+            </div>
+            <div class="mb-3">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male"
+                        formControlName="gender">
+                    <label class="form-check-label" for="inlineRadio1">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female"
+                        formControlName="gender">
+                    <label class="form-check-label" for="inlineRadio2">Female</label>
+                </div>
+                <div *ngIf="(userFormControl['gender'].dirty || userFormControl['gender'].touched) && userFormControl['gender'].invalid
+              || isFormSubmitted && userFormControl['gender'].invalid" class="py-1">
+                    <div *ngIf="userFormControl['gender']errors['required']" class="text-danger">
+                        Gender is required
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary me-2" (click)="onSubmit()">Submit</button>
+            <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+        </form>
+    </div>
+</div>

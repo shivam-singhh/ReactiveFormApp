@@ -1,0 +1,58 @@
+//Common table styles
+.table-wrapper {
+    background-color: $gray-100;
+    overflow: auto;
+}
+.table-user {
+    box-shadow: 0px -2px 5px $gray-300;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    text-align: left;
+    // position: relative; 
+    th {
+        font-weight: $font-semibold;
+        color: $gray-800;
+        white-space: nowrap;
+        border-bottom: 0;
+        height: 40px;
+        padding-left: 20px;
+        vertical-align: middle;
+    }
+    .table-body {
+        border: none;
+        td {
+            vertical-align: middle;
+            white-space: nowrap;
+            border: solid 1px $gray-400;
+            border-style: solid none;
+            color: $gray-dark;
+            padding: 10px 20px;
+            transition: .2s all ease-in-out;
+            
+            &:first-child {
+                border-left-style: solid;
+                border-top-left-radius: 10px; 
+                border-bottom-left-radius: 10px;
+            }
+            &:last-child {
+                border-right-style: solid;
+                border-bottom-right-radius: 10px; 
+                border-top-right-radius: 10px;
+                text-align: end; 
+            }
+        }
+        tr {
+            cursor: pointer;
+            background-color: $white;
+            border-radius: 10px;
+            box-shadow: -3px 3px 6px $secondary;
+            transition: .2s all ease-in-out;
+            &:hover {
+                td {
+                    border-color: $primary;
+                }
+                box-shadow: -3px 3px 10px $gray-400;
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../../node_modules/@angular/cdk/overlay-prebuilt.css';
+@import "../../node_modules/@ng-select/ng-select/themes/material.theme.css";
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+@import '../../node_modules/ngx-toastr/toastr.css';
+
+// App Base files--> Colors, Variable and directives
+@import '../assets/scss/base/index';
+
+// Bootstrap Required partials
+@import "../assets/scss/vendor/bootstrap-base";
+
+// Bootstrap components
+@import "../assets/scss/vendor/bootstrap-component";
+
+// App Layout --> Sidebar, Topbar and Content
+@import "../assets/scss/layout/index";
+
+// Add Custom component style
+@import "../assets/scss/component/index";

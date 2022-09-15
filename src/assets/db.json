@@ -1,0 +1,42 @@
+{
+  "users": [
+    {
+      "fullname": "Shivam Singh",
+      "email": "shivamsingh@gmail.com",
+      "interest": [
+        "Angular",
+        "React"
+      ],
+      "gender": "Male",
+      "id": 1
+    },
+    {
+      "fullname": "Pratik Tandel",
+      "email": "pratiktandel@gmail.com",
+      "interest": "react",
+      "gender": "Male",
+      "id": 2
+    },
+    {
+      "fullname": "Mitul Patel",
+      "email": "mitulpatel@gmail.com",
+      "interest": [
+        "React",
+        "Angular",
+        "Vue"
+      ],
+      "gender": "Female",
+      "id": 3
+    },
+    {
+      "fullname": "ewfwgfwreg",
+      "email": "sgvbwergw",
+      "interest": [
+        "React",
+        "Vue"
+      ],
+      "gender": "Female",
+      "id": 4
+    }
+  ]
+}
