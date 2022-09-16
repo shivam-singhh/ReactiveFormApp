@@ -2,33 +2,76 @@
     <header class="px-5 py-3">
         <h2>List of Users</h2>
         <div class="d-flex justify-content-between">
-            <input type="text" placeholder="Search User">
+            <div class="search-bar">
+                <input class="form-control pe-5" type="text" placeholder="Search User" [formControl]="search">
+                <button class="btn btn-search" (click)="onSearch(search.value)">
+                    <span class="icon-circle"></span>
+                    <span class="icon-line"></span>
+                </button>
+            </div>
             <button class="btn btn-primary text-white" (click)="onAdd()">+ Add</button>
         </div>
     </header>
-    <div class="flex-grow-1 table-wrapper">
-        <table class="table px-5 table-user">
-            <thead>
-                <tr>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Interest</th>
-                    <th scope="col">Gender</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody class="table-body">
-                <tr *ngFor="let item of tempUserList">
-                    <td>{{ item.fullname }}</td>
-                    <td>{{ item.email }}</td>
-                    <td>{{ item.interest }}</td>
-                    <td>{{ item.gender }}</td>
-                    <td>
-                        <button class="btn btn-primary me-2" (click)="onEdit(item)">Edit</button>
-                        <button class="btn btn-danger text-white"  (click)="onDelete(item.id)">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>  
+    <section class="section-list flex-grow-1 overflow-auto">
+        <div class="h-100 d-flex flex-column justify-space-between">
+            <div class="flex-grow-1 table-wrapper">
+                <table *ngIf="tempUserList.length && tempUserList.length > 0 ;else errorPrompt" class="table px-5 table-user">
+                    <thead>
+                        <tr>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Interest</th>
+                            <th scope="col">Gender</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body">
+                        <tr *ngFor="let item of tempUserList">
+                            <td>{{ item.fullname }}</td>
+                            <td>{{ item.email }}</td>
+                            <td>{{ item.interest }}</td>
+                            <td>{{ item.gender }}</td>
+                            <td>
+                                <button class="btn btn-primary me-2" (click)="onEdit(item)">Edit</button>
+                                <button class="btn btn-danger text-white" (click)="onDelete(item.id)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <ng-template #errorPrompt>
+                    <div class="d-flex align-items-center justify-content-center h-100">
+                        <h4>No records found</h4>
+                    </div>
+                </ng-template>
+            </div>
+            <!-- Start: Pagination -->
+            <div class="pagination-wrapper px-5 py-2">
+                <nav class="pagination-container p-2 m-0" aria-label="Page navigation">
+                    <ul class="pagination justify-content-end align-items-center mb-0">
+                        <li class="page-item">
+                            <button [disabled]="tempUserList[0].id == 1" (click)="pageDown()" class="page-link previous">
+                                <span class="icon-arrow"></span>
+                                <span>PREVIOUS</span>
+                            </button>
+                        </li>
+                        <li class="page-item"><a class="page-link pagination-number">
+                                {{((tempUserList[0].id + 9) / 10)| number:'1.0-0'}}
+                            </a></li>
+                        <li class="page-item"><a class="page-link total-page ps-0">
+                                <span class="me-2">out of</span>
+                                <span>5</span>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <button [disabled]="tempUserList.length && tempUserList.length < 10" (click)="pageUp()" class="page-link next">
+                                <span>NEXT</span>
+                                <span class="icon-arrow-up"></span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- End: Pagination -->
+        </div>
+    </section>
+</div>

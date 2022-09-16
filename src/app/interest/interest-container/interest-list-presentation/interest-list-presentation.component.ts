@@ -35,6 +35,12 @@ export class InterestListPresentationComponent implements OnInit, OnDestroy {
   @Output() public addUser: EventEmitter<InterestForm>;
   /** emitter to emit edit user details */
   @Output() public editUser: EventEmitter<InterestEditDetails>;
+  /** emitter search user details */
+  @Output() public searchUser: EventEmitter<InterestEditDetails>;
+  /** emitter next page */
+  @Output() public nextPage: EventEmitter<InterestEditDetails>;
+  /** emitter previous page */
+  @Output() public prevPage: EventEmitter<InterestEditDetails>;
 
   /** temp user list for displaying in table */
   public tempUserList!: Interest[];
@@ -49,12 +55,15 @@ export class InterestListPresentationComponent implements OnInit, OnDestroy {
 
   constructor(
     private interestListPresenterService: InterestListPresenterService,
-    private overlay: Overlay
+    private overlay: Overlay,
   ) {
     this._userList = [];
     this.deleteUser = new EventEmitter();
     this.addUser = new EventEmitter();
     this.editUser = new EventEmitter();
+    this.searchUser = new EventEmitter();
+    this.nextPage = new EventEmitter();
+    this.prevPage = new EventEmitter();
     this.search = new FormControl();
     this.destroy = new Subject();
   }
@@ -79,6 +88,21 @@ export class InterestListPresentationComponent implements OnInit, OnDestroy {
   public onEdit(item: Interest) {
     this.userId = item.id;
     this.openUserForm(item);
+  }
+
+  /** on search button click */
+  public onSearch(key: any) {
+    this.searchUser.emit(key);
+  }
+
+  /** on next button click */
+  public pageUp() {
+    this.nextPage.emit();
+  }
+
+  /** on next button click */
+  public pageDown() {
+    this.prevPage.emit();
   }
 
   /**
@@ -122,4 +146,5 @@ export class InterestListPresentationComponent implements OnInit, OnDestroy {
     this.destroy.next();
     this.destroy.unsubscribe();
   }
+
 }

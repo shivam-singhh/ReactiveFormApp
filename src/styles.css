@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import url(c:\UI Dev\Angular\reactiveFormApp\node_modules\@angular\cdk\overlay-prebuilt.css);
-@import url(c:\UI Dev\Angular\reactiveFormApp\node_modules\@ng-select\ng-select\themes\material.theme.css);
+@import url(c:\UI Dev\Angular\Angular Practice\ReactiveFormApp\node_modules\@angular\cdk\overlay-prebuilt.css);
+@import url(c:\UI Dev\Angular\Angular Practice\ReactiveFormApp\node_modules\@ng-select\ng-select\themes\material.theme.css);
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
-@import url(c:\UI Dev\Angular\reactiveFormApp\node_modules\ngx-toastr\toastr.css);
+@import url(c:\UI Dev\Angular\Angular Practice\ReactiveFormApp\node_modules\ngx-toastr\toastr.css);
 /****************
   => Theme-colors
 ****************/
@@ -12172,13 +12172,100 @@ fieldset:disabled .btn {
   }
 }
 
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ECECEC;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+  border-radius: 6px;
+  border: 3px solid #ECECEC;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #acb4c7;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #ECECEC;
+}
+
+.form-modal {
+  width: 450px;
+  padding: 26px;
+  background-color: white;
+  margin-top: 94px;
+}
+
+.cdk-overlay-pane {
+  position: absolute;
+  pointer-events: auto;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: start;
+  justify-content: center;
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-bar .form-control {
+  padding: 10px;
+}
+
+.search-bar .btn-search {
+  position: absolute;
+  right: 15px;
+  top: 3px;
+}
+
+.search-bar .btn-search:focus {
+  border: transparent;
+  outline: transparent;
+}
+
+.search-bar .btn-search .icon-circle,
+.search-bar .btn-search .icon-line {
+  position: absolute;
+  right: 0;
+}
+
+.search-bar .btn-search .icon-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid #707070;
+}
+
+.search-bar .btn-search .icon-line {
+  width: 12px;
+  transform: rotate(45deg);
+  background-color: #707070;
+  height: 2px;
+  position: absolute;
+  bottom: -15px;
+  right: -5px;
+}
+
 .table-wrapper {
   background-color: #f5f5f7;
   overflow: auto;
 }
 
-.table-user {
+.section-list {
   box-shadow: 0px -2px 5px #e1e1e1;
+}
+
+.table-user {
   border-collapse: separate;
   border-spacing: 0 10px;
   text-align: left;
@@ -12237,45 +12324,138 @@ fieldset:disabled .btn {
   border-color: #0262B2;
 }
 
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+.pagination-wrapper {
+  background-color: #f5f5f7;
 }
 
-::-webkit-scrollbar-track {
-  background: #ECECEC;
+.pagination-container {
+  background-color: #e4e5e8;
+  border-radius: 8px;
+  margin-top: 15px;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: #c4c4c4;
-  border-radius: 6px;
-  border: 3px solid #ECECEC;
+@media screen and (max-width: 1610px) {
+  .pagination-container {
+    margin-top: 10px;
+  }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #acb4c7;
-}
-
-::-webkit-scrollbar-corner {
-  background-color: #ECECEC;
-}
-
-.form-modal {
-  width: 450px;
-  padding: 26px;
-  background-color: white;
-  margin-top: 94px;
-}
-
-.cdk-overlay-pane {
-  position: absolute;
-  pointer-events: auto;
-  box-sizing: border-box;
-  z-index: 1000;
+.pagination-container .page-link {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000;
+  letter-spacing: 0.5px;
   display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: start;
+  align-items: center;
+  transition: 0s all;
+}
+
+@media screen and (max-width: 1610px) {
+  .pagination-container .page-link {
+    font-size: 14px;
+  }
+}
+
+.pagination-container .page-link.previous {
+  padding-right: 0.75rem;
+  border-right: 1px solid #acb4c7;
+}
+
+@media screen and (max-width: 1610px) {
+  .pagination-container .page-link.previous {
+    padding-right: 0.55rem;
+  }
+}
+
+.pagination-container .page-link.next {
+  padding-left: 0.75rem;
+  margin-left: 10px;
+  border-left: 1px solid #acb4c7;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 1610px) {
+  .pagination-container .page-link.next {
+    padding-left: 0.55rem;
+    margin-left: 8px;
+    margin-right: 5px;
+  }
+}
+
+.pagination-container .page-link.pagination-number {
+  border: 1px solid #acb4c7;
+  max-width: auto;
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  margin: 0 10px;
+  margin-right: 0px;
+  border-radius: 6px;
+  background: #ffffff;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 1610px) {
+  .pagination-container .page-link.pagination-number {
+    min-width: 28px;
+    height: 28px;
+  }
+}
+
+.pagination-container .page-link:disabled {
+  cursor: no-drop;
+  opacity: 0.75;
+}
+
+.pagination-container .page-link.total-page span {
+  color: #8f8f8f;
+  font-family: 500;
+  text-transform: lowercase;
+}
+
+.pagination-container .page-link .icon-arrow-up,
+.pagination-container .page-link .icon-arrow {
+  color: #0262B2;
+  display: flex;
+  font-size: 8px;
+  margin-top: 2px;
+}
+
+@media screen and (max-width: 1610px) {
+  .pagination-container .page-link .icon-arrow-up,
+  .pagination-container .page-link .icon-arrow {
+    font-size: 6px;
+  }
+}
+
+.pagination-container .page-link .icon-arrow-up::before,
+.pagination-container .page-link .icon-arrow::before {
+  transform: rotateZ(90deg);
+}
+
+.pagination-container .page-link .icon-arrow-up {
+  margin-left: 5px;
+}
+
+@media screen and (max-width: 1610px) {
+  .pagination-container .page-link .icon-arrow-up {
+    margin-left: 3px;
+  }
+}
+
+.pagination-container .page-link .icon-arrow {
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 1610px) {
+  .pagination-container .page-link .icon-arrow {
+    margin-right: 3px;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

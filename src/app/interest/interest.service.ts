@@ -15,9 +15,10 @@ export class InterestService {
   /**
    * api to get list of users
    * @returns user list as observable
+   * * @param pageNo page number
    */
-   getUsers(): Observable<Interest[]> {
-    let url = 'http://localhost:3000/users';
+   getUsers(pageNo: number): Observable<Interest[]> {
+    let url = `http://localhost:3000/users?_page=${pageNo}`;
     return this.http.get<Interest[]>(url);
   }
 
@@ -47,5 +48,14 @@ export class InterestService {
    editUser(postObj: InterestForm, id: number): Observable<any> {
     let url = `http://localhost:3000/users/${id}`;
     return this.http.put<any>(url, postObj);
+  }
+
+  /**
+   * api to search user
+   * @param key search key
+   */
+   searchUser(key: string, pageNo: number): Observable<Interest[]> {
+    let url = `http://localhost:3000/users?q=${key}&_page=${pageNo}`;
+    return this.http.get<Interest[]>(url);
   }
 }
